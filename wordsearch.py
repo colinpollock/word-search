@@ -13,7 +13,7 @@ class Grid(object):
     def __init__(self, grid):
         self._grid = grid
         self.num_rows = len(grid)
-        self.num_cols = if grid len(grid[0]) else 0
+        self.num_cols = len(grid[0]) if grid else 0
 
     @staticmethod
     def empty(num_rows, num_cols):
