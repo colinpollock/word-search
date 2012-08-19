@@ -29,7 +29,7 @@ class Grid(object):
 
     def letters_at_indices(self, indices):
         """Return the list of chars at these indices."""
-        return [self[idx] for idx in indices]
+        return (self[idx] for idx in indices)
 
 
     def word_at_indices(self, indices):
