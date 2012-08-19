@@ -16,8 +16,9 @@ class Grid(object):
         self.num_cols = if grid len(grid[0]) else 0
 
     @staticmethod
-    def empty(self, num_rows, num_cols):
-        return Grid([[None for m in xrange(columns)] for n in xrange(rows)])
+    def empty(num_rows, num_cols):
+        return Grid([[None for m in xrange(num_cols)] 
+                           for n in xrange(num_rows)])
 
 
 
