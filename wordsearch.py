@@ -6,6 +6,7 @@ TODO
 
 """
 
+import itertools
 
 
 class Grid(object):
@@ -48,7 +49,22 @@ class Grid(object):
         """Return a list of lists of indices of `length` items beginning at 
         `start_index`.
         """
-        #TODO
+        return itertools.chain(self.up_span(start_index, length, wrap),
+                               self.down_span(start_index, length, wrap),
+                               self.right_span(start_index, length, wrap),
+                               self.left_span(start_index, length, wrap))
+
+    def up_span(self, start_index, length, wrap):
+        return None 
+
+    def down_span(self, start_index, length, wrap):
+        return None
+
+    def right_span(self, start_index, length, wrap):
+        return None
+
+    def left_span(self, start_index, length, wrap):
+        return None
 
 
     def __iter__(self):

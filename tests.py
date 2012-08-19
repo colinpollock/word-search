@@ -1,8 +1,7 @@
+"""TODO"""
+
 
 from wordsearch import Grid
-
-
-
 
 class TestGridOperations(object):
     def setup(self):
@@ -44,6 +43,30 @@ class TestGridOperations(object):
                          ((1, 0), 'N'), ((1, 1), 'T'), ((1, 2), 'A')]
 
 
+    ############################################################################
+    # TESTING Spans
+    def test_right_span_nowrap(self):
+        found = list(self.grid.right_span((1, 0), 3, False))
+        assert found == [(1, 0), (1, 1), (1, 2)]
+
+    def test_right_span_nowrap_nospace(self):
+        """Should return None b/c there's not enough space for a span."""
+        found = self.grid.right_span((1, 1), 3, False)
+        assert found == None
+
+    def test_right_span_wrap(self):
+        found = list(self.grid.right_span((0, 2), 3, True))
+        assert found == [(0, 2), (0, 0), (0, 1)]
+
+    def test_right_span_nowrap_nospace(self):
+        """Should return None b/c there's not enough space for a span."""
+        found = list(self.grid.right_span((1, 1), 3, False))
+        assert found == None
+
+    def test_spans(self):
+        found = list(self.grid.spans((0, 0), 2, False))
+        assert len(filter(None, found)) == 2
+
 
 def test_empty_setup():
     """There should be the right number of rows and columns, all None."""
@@ -51,8 +74,3 @@ def test_empty_setup():
     assert grid.num_rows == 4
     assert grid.num_cols == 3
     assert all(item is None for item in iter(grid))
-
-    
-
-
-
