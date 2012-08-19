@@ -61,9 +61,8 @@ class Grid(object):
     def index_letter_pairs(self):
         """Return a generator of ((m, n), letter) pairs.""" 
         for m, row in enumerate(self._grid):
-            for n, this_letter in enumerate(row):
-                if letter == this_letter:
-                    yield (m, n)
+            for n, letter in enumerate(row):
+                yield ((m, n), letter)
 
     def __repr__(self):
         pass #TODO
