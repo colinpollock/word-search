@@ -94,9 +94,6 @@ def load_from_str_input(input_str):
     pass #TODO
 
 
-def test_one():
-    grid = Grid(
-
 def main(args):
     test_one()
     pass #TODO: 
