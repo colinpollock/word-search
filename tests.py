@@ -88,6 +88,11 @@ class TestGridOperations(object):
         found = self.grid.right_span((1, 1), 3, False)
         assert found == None
 
+    def test_left_span_wrap(self):
+        found = self.grid.left_span((1, 0), 3, True)
+        print found
+        assert found == [(1, 0), (1, 2), (1, 1)]
+
     @nottest
     def test_spans_wrap(self):
         found = [list(ob) for ob in (self.grid.spans((0, 0), 2, False))]

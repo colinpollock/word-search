@@ -81,11 +81,21 @@ class Grid(object):
             span.append((m, n_pos))
         return span
 
+    def left_span(self, (m, n), length, wrap):
+        """Return a generator of indices starting at (m, n) or None."""
+
+        if length > self.num_cols or (not wrap and n + length > self.num_cols):
+            return None
 
 
+        span = []
+        for n_offset in xrange(length):
+            n_pos = n - n_offset
+            if n_pos < 0:
+                n_pos += self.num_cols
+            span.append((m, n_pos))
+        return span
 
-    def left_span(self, start_index, length, wrap):
-        return None #TODO
 
     def left_down_span(self, start_index, length, wrap):
         return None #TODO
