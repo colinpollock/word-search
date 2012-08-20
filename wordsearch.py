@@ -179,7 +179,7 @@ class Grid(object):
         for m, n in self.positions_that_have_letter(word[0]):
             for span in self.spans((m, n), len(word), wrap):
                 if self.word_at_indices(span) == word:
-                    return span
+                    return span[0], span[-1]
         return None
 
 

@@ -28,18 +28,18 @@ class TestFindWord(object):
     def test_found(self):
         found = self.find('CAT', False)
         print found
-        assert found == [(0, 0), (0, 1), (0, 2)]
+        assert found == [(0, 0), (0, 2)]
 
     def test_found_wrapped(self):
         found = self.find('ANT', True)
         print found
-        assert found == [(1, 2), (1, 0), (1, 1)]
+        assert found == [(1, 2), (1, 1)]
 
     def test_single_letter(self):
-        assert self.find('A', True) == [(0, 1)]
+        assert self.find('A', True) == [(0, 1), (0, 1)]
 
     def test_left_wrapped(self):
-        assert self.find('NAT', True) == [(1, 0), (1, 2), (1, 1)]
+        assert self.find('NAT', True) == [(1, 0), (1, 1)]
 
 
     @nottest
