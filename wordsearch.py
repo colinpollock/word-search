@@ -13,7 +13,7 @@ import sys
 class Grid(object):
 
     def __init__(self, grid):
-        self._grid = grid
+        self.rows = grid
         self.num_rows = len(grid)
         self.num_cols = len(grid[0]) if grid else 0
 
@@ -24,8 +24,7 @@ class Grid(object):
 
     def __getitem__(self, (m, n)):
         """Return the letter at the mth row and nth column."""
-        return self._grid[m][n]
-
+        return self.rows[m][n]
 
     def letters_at_indices(self, indices):
         """Return the list of chars at these indices."""
@@ -149,20 +148,20 @@ class Grid(object):
 
     def __iter__(self):
         """Return a generator of each letter in the grid."""
-        for row in self._grid:
+        for row in self.rows:
             for item in row:
                 yield item
 
     @property
     def index_letter_pairs(self):
         """Return a generator of ((m, n), letter) pairs.""" 
-        for m, row in enumerate(self._grid):
+        for m, row in enumerate(self.rows):
             for n, letter in enumerate(row):
                 yield ((m, n), letter)
 
     def __str__(self):
         return '\n'.join(''.join('*' if item is None else item for item in row) 
-                         for row in self._grid)
+                         for row in self.rows)
 
 
     def find_words(self, words, wrap):
