@@ -10,6 +10,32 @@ from nose.tools import nottest
 two_by_three = [['C', 'A', 'T'],
                 ['N', 'T', 'A']]
 
+class TestFindWords(object):
+    def setup(self):
+        self.grid = Grid([['A', 'B', 'C'],
+                          ['D', 'E', 'F'],
+                          ['G', 'H', 'I']])
+
+        self.words = ['FED', 'CAB', 'GAD', 'BID', 'HIGH']
+
+    @nottest
+    def test_no_wrap(self):
+        indices = self.grid.find_words(self.words, False)
+        assert indices == [[(1, 2), (1, 1), (1, 0)],
+                           None,
+                           None,
+                           None,
+                           None]
+
+    @nottest
+    def test_wrap(self):
+        indices = self.grid.find_words(self.words, True)
+        assert indices == [[(1, 2), (1, 1), (1, 0)],
+                           [(0, 2), (0, 0), (0, 1)],
+                           [(2, 0), (0, 0), (1, 0)],
+                           [(0, 1), (2, 2), (1, 0)],
+                           None]
+
 
 class TestFindWord(object):
     def setup(self):
