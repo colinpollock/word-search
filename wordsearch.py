@@ -166,13 +166,27 @@ class Grid(object):
 
 
     def find_words(self, words, wrap):
-        """For each word return a list of (m, n) indices where it's found or 
-        None if it isn't in the grid.
+        """Attempt to find all the input words in the grid.
+
+        For each word, return a pair of positions representing the start and end
+        positions of the word. None represents that the word is not in the grid.
+
+        If wrap is True then a word can get to the end of a line and wrap back 
+        around.
         """
         return [self.find_word(w, wrap) for w in words]
         
 
     def find_word(self, word, wrap):
+        """Find `word` in the grid.
+
+        Args:
+          word: the word to look for
+          wrap: bool indicating whether a word can wrap around the grid
+        Returns:
+          two tuples indicating the start and end position 
+        """
+
         if not word:
             return None
 
