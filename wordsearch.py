@@ -7,6 +7,7 @@ TODO
 """
 
 import itertools
+import sys
 
 
 class Grid(object):
