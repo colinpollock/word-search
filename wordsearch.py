@@ -70,10 +70,7 @@ class Grid(object):
         The indices go from left to right and can wrap around the grid if wrap
         is True. 
         """
-
-        if length > self.num_cols:
-            return None
-        if not wrap and n + length > self.num_cols:
+        if length > self.num_cols or (not wrap and n + length > self.num_cols):
             return None
 
         span = []
