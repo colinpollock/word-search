@@ -139,6 +139,7 @@ class TestGridOperations(object):
 
     def test_down_span_over_end(self):
         assert self.grid.down_span((1, 0), 2, False) is None
+
     @nottest
     def test_spans_wrap(self):
         found = [list(ob) for ob in (self.grid.spans((0, 0), 2, False))]
