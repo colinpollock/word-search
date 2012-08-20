@@ -21,7 +21,9 @@ class TestFindWord(object):
 
     def test_missing(self):
         assert self.find('XYZ', False) is None
-        assert self.find('XXXXXXX', False) is None
+
+    def test_too_long(self):
+        assert self.find('CATC', True) is None
 
     def test_found(self):
         found = self.find('CAT', False)
