@@ -160,8 +160,10 @@ class Grid(object):
             for n, letter in enumerate(row):
                 yield ((m, n), letter)
 
-    def __repr__(self):
-        pass #TODO
+    def __str__(self):
+        return '\n'.join(''.join('*' if item is None else item for item in row) 
+                         for row in self._grid)
+
 
     def find_words(self, words, wrap):
         """For each word return a list of (m, n) indices where it's found or 

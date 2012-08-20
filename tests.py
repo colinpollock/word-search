@@ -162,6 +162,9 @@ class TestGridOperations(object):
         found = self.grid.right_span((1, 1), 4, True)
         assert found == None
 
+    def test_str(self):
+        assert str(self.grid) == 'CAT\nNTA'
+
 
 def test_empty_setup():
     """There should be the right number of rows and columns, all None."""
