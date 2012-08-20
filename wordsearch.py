@@ -1,4 +1,4 @@
-"""Word Search solver for Factual code test.
+"""Word Search solver
 
 TODO
 ----
