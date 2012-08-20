@@ -155,7 +155,6 @@ class TestGridOperations(object):
     def test_spans_wrap(self):
         found = [list(ob) for ob in (self.grid.spans((0, 0), 2, False))]
         assert len([ob for ob in found if ob is not None]) == 6
-        #TODO: test for wrapping when on the corner letter
 
     @nottest
     def test_spans_no_wrap(self):

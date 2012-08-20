@@ -34,7 +34,7 @@ class Grid(object):
 
     def word_at_indices(self, indices):
         """Return the word (a str) at these indices."""
-        return ''.join(self.letters_at_indices(indices)) #TODO: char by char
+        return ''.join(self.letters_at_indices(indices))
 
 
     def positions_that_have_letter(self, letter):
