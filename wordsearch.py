@@ -58,11 +58,45 @@ class Grid(object):
             self.right_down_span(start_index, length, wrap),
             self.right_up_span(start_index, length, wrap)))
 
-    def up_span(self, start_index, length, wrap):
-        return None #TODO
+    def up_span(self, (m, n), length, wrap):
+        """Return a generator of length indices starting at (m, n) or None.
 
-    def down_span(self, start_index, length, wrap):
-        return None #TODO
+        The indices go from bottom to top and can wrap around the grid if wrap
+        is True. 
+        """
+
+        if length > self.num_rows or (not wrap and m - length + 1 < 0):
+            return None
+
+        span = []
+        for m_offset in xrange(length):
+            m_pos = m - m_offset
+            if m_pos < 0:
+                m_pos += self.num_rows
+            span.append((m_pos, n))
+        return span
+
+
+    def down_span(self, (m, n), length, wrap):
+        """Return a generator of length indices starting at (m, n) or None.
+
+        The indices go from top to bottom and can wrap around the grid if wrap
+        is True. 
+        """
+
+        if length > self.num_rows or (not wrap and m + length > self.num_rows):
+            return None
+
+        span = []
+        for m_offset in xrange(length):
+            m_pos = m + m_offset
+            if m_pos >= self.num_rows:
+                m_pos -= self.num_rows
+            span.append((m_pos, n))
+        return span
+
+
+
 
     def right_span(self, (m, n), length, wrap):
         """Return a generator of length indices starting at (m, n) or None.

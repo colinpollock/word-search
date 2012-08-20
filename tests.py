@@ -88,6 +88,7 @@ class TestGridOperations(object):
 
     ############################################################################
     # Testing Spans
+
     def test_right_span_nowrap(self):
         found = list(self.grid.right_span((1, 0), 3, False))
         assert found == [(1, 0), (1, 1), (1, 2)]
@@ -106,6 +107,34 @@ class TestGridOperations(object):
         print found
         assert found == [(1, 0), (1, 2), (1, 1)]
 
+    def test_up_span(self):
+        found = self.grid.up_span((1, 0), 2, False)
+        print found
+        assert found == [(1, 0), (0, 0)]
+
+    def test_up_span_wrap(self):
+        found = self.grid.up_span((0, 0), 2, True)
+        assert found == [(0, 0), (1, 0)]
+
+    def test_up_span_too_long(self):
+        assert self.grid.up_span((0, 0), 2, False) is None
+
+    def test_down_span(self):
+        found = self.grid.down_span((0, 0), 2, False)
+        assert found == [(0, 0), (1, 0)]
+
+    def test_down_span_wrap(self):
+        found = self.grid.down_span((1, 0), 2, True)
+        assert found == [(1, 0), (0, 0)]
+
+    def test_down_span_too_long(self):
+        assert self.grid.down_span((0, 0), 3, False) is None
+
+    def test_down_span_too_long_with_wrap(self):
+        assert self.grid.down_span((0, 0), 3, True) is None
+
+    def test_down_span_over_end(self):
+        assert self.grid.down_span((1, 0), 2, False) is None
     @nottest
     def test_spans_wrap(self):
         found = [list(ob) for ob in (self.grid.spans((0, 0), 2, False))]
