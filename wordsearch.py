@@ -94,7 +94,6 @@ class Grid(object):
         if length > self.num_cols or (not wrap and n + length > self.num_cols):
             return None
 
-
         span = []
         for n_offset in xrange(length):
             n_pos = n - n_offset
