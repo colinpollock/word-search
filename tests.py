@@ -38,6 +38,11 @@ class TestFindWord(object):
     def test_single_letter(self):
         assert self.find('A', True) == [(0, 1), (0, 1)]
 
+    def test_left(self):
+        found = self.find('TAC', False) 
+        print found
+        assert found == [(0, 2), (0, 0)]
+
     def test_left_wrapped(self):
         assert self.find('NAT', True) == [(1, 0), (1, 1)]
 
@@ -105,6 +110,11 @@ class TestGridOperations(object):
         """Should return None b/c there's not enough space for a span."""
         found = self.grid.right_span((1, 1), 3, False)
         assert found == None
+
+    def test_left_span(self):
+        found = self.grid.left_span((0, 2), 3, False)
+        print found
+        assert found == [(0, 2), (0, 1), (0, 0)]
 
     def test_left_span_wrap(self):
         found = self.grid.left_span((1, 0), 3, True)
