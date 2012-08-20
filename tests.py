@@ -38,6 +38,14 @@ class TestFindWord(object):
     def test_single_letter(self):
         assert self.find('A', True) == [(0, 1)]
 
+    @nottest
+    def test_right_down(self):
+        assert self.find('CT', True) == [(0, 0), (1, 1)]
+
+    @nottest
+    def test_right_down_wrap(self):
+        assert self.find('TC', True) == [(1, 1), (0, 0)]
+
 
 
 class TestGridOperations(object):
