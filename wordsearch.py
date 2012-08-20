@@ -121,7 +121,7 @@ class Grid(object):
         is True.
         """
 
-        if length > self.num_cols or (not wrap and n + length > self.num_cols):
+        if length > self.num_cols or (not wrap and n - length + 1 < 0):
             return None
 
         span = []
