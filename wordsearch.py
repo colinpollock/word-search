@@ -21,8 +21,6 @@ class Grid(object):
         return Grid([[None for m in xrange(num_cols)] 
                            for n in xrange(num_rows)])
 
-
-
     def __getitem__(self, (m, n)):
         """Return the letter at the mth row and nth column."""
         return self._grid[m][n]
@@ -132,10 +130,7 @@ class Grid(object):
             for span in self.spans((m, n), len(word), wrap):
                 if self.word_at_indices(span) == word:
                     return span
-
         return None
-
-
 
 
 
