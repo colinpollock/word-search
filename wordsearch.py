@@ -66,6 +66,18 @@ class Grid(object):
     def left_span(self, start_index, length, wrap):
         return None #TODO
 
+    def left_down_span(self, start_index, length, wrap):
+        return None #TODO
+
+    def left_up_span(self, start_index, length, wrap):
+        return None #TODO
+ 
+    def right_up_span(self, start_index, length, wrap):
+        return None #TODO
+
+    def right_down_span(self, start_index, length, wrap):
+        return None #TODO
+
 
     def __iter__(self):
         """Return a generator of each letter in the grid."""
