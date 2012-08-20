@@ -199,9 +199,49 @@ class Grid(object):
         return None
 
 
+class InputParseError(Exception):
+    """Raised for malformed input."""
 
 def load_from_str_input(input_str):
-    pass #TODO
+    """Load a grid, word list, and +/- wrap from an input string."""
+    pat = re.compile(r"""
+        \s*
+        (?P<rows>\d+)
+        [ ]
+        (?P<cols>\d+)
+        (?P<grid>.*?)
+        (?P<wrap>WRAP|NO_WRAP)
+        \s+
+        (?P<num_words>\d+)
+        \s
+        (?P<words>.*)
+    """, re.VERBOSE|re.DOTALL)
+
+    m = pat.match(input_str)
+    if m is None:
+        raise InputParseError('Failed to parse input string')
+
+    data = m.groupdict()
+
+    grid = Grid([list(row.strip()) for row in data['grid'].split('\n')
+                                   if row.strip()])
+
+    if int(data['rows']) != grid.num_rows or int(data['cols']) != grid.num_cols:
+        raise InputParseError("Number of rows or colums doesn't match data")
+
+    words = [line.strip() for line in data['words'].split('\n') if line.strip()]
+    if len(words) != int(data['num_words']):
+        raise InputParseError("Number of words doesn't match data")
+
+    if data['wrap'] == 'WRAP':
+        wrap = True
+    elif data['wrap'] == 'NO_WRAP':
+        wrap = False
+    else:
+        raise InputParseError('Wrap instruction must be "WRAP" OR "NO_WRAP"')
+
+
+    return grid, words, wrap
 
 
 def main(args):

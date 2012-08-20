@@ -172,3 +172,43 @@ def test_empty_setup():
     assert grid.num_rows == 4
     assert grid.num_cols == 3
     assert all(item is None for item in grid)
+
+
+def test_load_from_str_input():
+    s = """3 3
+
+
+ABC
+
+
+DEF
+
+
+GHI
+
+
+WRAP
+
+
+5
+
+
+FED
+
+
+CAB
+
+
+GAD
+
+
+BID
+
+
+HIGH
+"""
+    grid, words, wrap = load_from_str_input(s)
+    assert grid.num_rows == 3
+    assert grid.num_cols == 3
+    assert words == ['FED', 'CAB', 'GAD', 'BID', 'HIGH']
+    assert wrap == True
