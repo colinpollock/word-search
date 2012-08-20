@@ -38,6 +38,10 @@ class TestFindWord(object):
     def test_single_letter(self):
         assert self.find('A', True) == [(0, 1)]
 
+    def test_left_wrapped(self):
+        assert self.find('NAT', True) == [(1, 0), (1, 2), (1, 1)]
+
+
     @nottest
     def test_right_down(self):
         assert self.find('CT', True) == [(0, 0), (1, 1)]
