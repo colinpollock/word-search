@@ -145,6 +145,9 @@ class Grid(object):
     def right_down_span(self, start_index, length, wrap):
         return None #TODO
 
+    def __len__(self):
+        """Return the number of letter slots in the grid."""
+        return self.num_rows * self.num_cols
 
     def __iter__(self):
         """Return a generator of each letter in the grid."""
