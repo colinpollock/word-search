@@ -169,7 +169,7 @@ class Grid(object):
         """For each word return a list of (m, n) indices where it's found or 
         None if it isn't in the grid.
         """
-        return [find_word(w, wrap) for w in words]
+        return [self.find_word(w, wrap) for w in words]
         
 
     def find_word(self, word, wrap):
