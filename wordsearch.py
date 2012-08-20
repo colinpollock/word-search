@@ -7,6 +7,7 @@ TODO
 """
 
 import itertools
+import re
 import sys
 
 
@@ -244,10 +245,24 @@ def load_from_str_input(input_str):
     return grid, words, wrap
 
 
-def main(args):
-    test_one()
-    pass #TODO: 
 
+
+def main(args):
+    if not args:
+        msg = 'First argument must be path to file containing instructions'
+        print >> sys.stderr, msg
+
+    with open(args[0], 'r') as f:
+        text = f.read()
+
+    grid, words, wrap = load_from_str_input(text)
+    for position in grid.find_words(words, wrap):
+        if position is None:
+            print 'NOT FOUND'
+        else:
+            ((m1, n1), (m2, n2)) = position
+            print '(%d,%d) (%d,%d)' % (m1, n1, m2, n2)
+        print 
 
 if __name__ == '__main__':
     main(sys.argv[1:])
