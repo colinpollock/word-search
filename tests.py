@@ -35,6 +35,9 @@ class TestFindWord(object):
         print found
         assert found == [(1, 2), (1, 0), (1, 1)]
 
+    def test_single_letter(self):
+        assert self.find('A', True) == [(0, 1)]
+
 
 
 class TestGridOperations(object):
