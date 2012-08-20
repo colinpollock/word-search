@@ -95,19 +95,19 @@ class Grid(object):
     def __repr__(self):
         pass #TODO
 
-    def find_words(self, words):
+    def find_words(self, words, wrap):
         """For each word return a list of (m, n) indices where it's found or 
         None if it isn't in the grid.
         """
-        return [find_word(w) for w in words]
+        return [find_word(w, wrap) for w in words]
         
 
-    def find_word(self, word):
+    def find_word(self, word, wrap):
         if not word:
             return None
 
         for m, n in self.positions_that_have_letter(word[0]):
-            for span in self.spans((m, n), len(word)):
+            for span in self.spans((m, n), len(word), wrap):
                 if self.word_at_indices(span) == word:
                     return span
 
