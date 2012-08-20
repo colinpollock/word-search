@@ -1,7 +1,8 @@
 """TODO"""
 
 
-from wordsearch import Grid
+
+from wordsearch import Grid, load_from_str_input
 
 from nose.tools import nottest
 
