@@ -64,10 +64,9 @@ class Grid(object):
     def down_span(self, start_index, length, wrap):
         return None #TODO
 
-    def right_span(self, start_index, length, wrap):
         """Return a generator of (m, n) indices or None."""
+    def right_span(self, (m, n), length, wrap):
 
-        m, n = start_index
         if length > self.num_cols:
             return None
         if not wrap and n + length > self.num_cols:
