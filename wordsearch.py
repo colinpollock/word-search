@@ -49,14 +49,14 @@ class Grid(object):
         `start_index`.
         """
         return itertools.ifilter(None, 
-            [self.up_span(start_index, length, wrap),
+            (self.up_span(start_index, length, wrap),
             self.down_span(start_index, length, wrap),
             self.right_span(start_index, length, wrap),
             self.left_span(start_index, length, wrap),
             self.left_down_span(start_index, length, wrap),
             self.left_up_span(start_index, length, wrap),
             self.right_down_span(start_index, length, wrap),
-            self.right_up_span(start_index, length, wrap)])
+            self.right_up_span(start_index, length, wrap)))
 
     def up_span(self, start_index, length, wrap):
         return None #TODO
