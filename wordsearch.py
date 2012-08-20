@@ -55,16 +55,16 @@ class Grid(object):
                                self.left_span(start_index, length, wrap))
 
     def up_span(self, start_index, length, wrap):
-        return None 
+        return None #TODO
 
     def down_span(self, start_index, length, wrap):
-        return None
+        return None #TODO
 
     def right_span(self, start_index, length, wrap):
         return None
 
     def left_span(self, start_index, length, wrap):
-        return None
+        return None #TODO
 
 
     def __iter__(self):
