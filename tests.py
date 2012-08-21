@@ -20,7 +20,7 @@ class TestFindWords(object):
     @nottest
     def test_no_wrap(self):
         indices = self.grid.find_words(self.words, False)
-        assert indices == [[(1, 2), (1, 1), (1, 0)],
+        assert indices == [[(1, 2), (1, 0)],
                            None,
                            None,
                            None,
@@ -29,10 +29,10 @@ class TestFindWords(object):
     @nottest
     def test_wrap(self):
         indices = self.grid.find_words(self.words, True)
-        assert indices == [[(1, 2), (1, 1), (1, 0)],
-                           [(0, 2), (0, 0), (0, 1)],
-                           [(2, 0), (0, 0), (1, 0)],
-                           [(0, 1), (2, 2), (1, 0)],
+        assert indices == [[(1, 2), (1, 0)],
+                           [(0, 2), (0, 1)],
+                           [(2, 0), (1, 0)],
+                           [(0, 1), (1, 0)],
                            None]
 
 
