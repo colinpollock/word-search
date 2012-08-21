@@ -124,8 +124,9 @@ class TestGridOperations(object):
                          ((1, 0), 'N'), ((1, 1), 'T'), ((1, 2), 'A')]
 
 
-    ############################################################################
-    # Testing Spans
+class TestSpanFinding(object):
+    def setup(self):
+        self.grid = Grid(two_by_three)
 
     def test_right_span_nowrap(self):
         found = list(self.grid.right_span((1, 0), 3, False))
