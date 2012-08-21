@@ -50,13 +50,13 @@ class Grid(object):
         """
         return itertools.ifilter(None, 
             (self.up_span(start_index, length, wrap),
-            self.down_span(start_index, length, wrap),
-            self.right_span(start_index, length, wrap),
-            self.left_span(start_index, length, wrap),
-            self.left_down_span(start_index, length, wrap),
-            self.left_up_span(start_index, length, wrap),
-            self.right_down_span(start_index, length, wrap),
-            self.right_up_span(start_index, length, wrap)))
+             self.down_span(start_index, length, wrap),
+             self.right_span(start_index, length, wrap),
+             self.left_span(start_index, length, wrap),
+             self.left_down_span(start_index, length, wrap),
+             self.left_up_span(start_index, length, wrap),
+             self.right_down_span(start_index, length, wrap),
+             self.right_up_span(start_index, length, wrap)))
 
     def up_span(self, (m, n), length, wrap):
         """Return a generator of length indices starting at (m, n) or None.
