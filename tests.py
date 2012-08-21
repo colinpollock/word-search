@@ -1,6 +1,4 @@
-"""TODO"""
-
-
+"""Tests for word search code"""
 
 
 from nose.tools import nottest
