@@ -7,8 +7,6 @@ from wordsearch import Grid, load_from_str_input
 from nose.tools import nottest
 
 
-two_by_three = [['C', 'A', 'T'],
-                ['N', 'T', 'A']]
 
 class TestFindWords(object):
     def setup(self):
@@ -36,6 +34,9 @@ class TestFindWords(object):
                            [(0, 1), (2, 2), (1, 0)],
                            None]
 
+
+two_by_three = [['C', 'A', 'T'],
+                ['N', 'T', 'A']]
 
 class TestFindWord(object):
     def setup(self):
