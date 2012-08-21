@@ -110,17 +110,69 @@ class Grid(object):
 
 
 
-    def left_down_span(self, start_index, length, wrap):
-        return None #TODO
+    def left_down_span(self, (m, n), length, wrap):
+        """Return a generator of length indices starting at (m, n) or None.
 
-    def left_up_span(self, start_index, length, wrap):
-        return None #TODO
+        The indices go diagonally from the top right to the bottom left and can
+        wrap around the grid if wrap is True.
+        """
+
+        if length > self.num_cols or length > self.num_rows or \
+           (not wrap and (n - length + 1 < 0 or m + length > self.num_rows)):
+            return None
+
+        return [(mm % self.num_rows, nn % self.num_cols) 
+                for (mm, nn) in izip(xrange(m, m + length), 
+                                     xrange(n, n - length, -1))]
+
+
+    def left_up_span(self, (m, n), length, wrap):
+        """Return a generator of length indices starting at (m, n) or None.
+
+        The indices go diagonally from the bottom right to the top left and can
+        wrap around the grid if wrap is True.
+        """
+
+        if length > self.num_cols or length > self.num_rows or \
+           (not wrap and (n - length + 1 < 0 or m - length + 1 < 0)):
+            return None
+        
+        return [(mm % self.num_rows, nn % self.num_cols) 
+                for (mm, nn) in izip(xrange(m, m - length, -1), 
+                                     xrange(n, n - length, -1))]
+
  
-    def right_up_span(self, start_index, length, wrap):
-        return None #TODO
+    def right_up_span(self, (m, n), length, wrap):
+        """Return a generator of length indices starting at (m, n) or None.
 
-    def right_down_span(self, start_index, length, wrap):
-        return None #TODO
+        The indices go diagonally from the bottom left to the top right and can
+        wrap around the grid if wrap is True.
+        """
+
+        if length > self.num_cols or length > self.num_rows or \
+           (not wrap and (n + length > self.num_cols or m - length + 1 < 0)):
+            return None
+        
+        return [(mm % self.num_rows, nn % self.num_cols) 
+                for (mm, nn) in izip(xrange(m, m - length, -1), 
+                                     xrange(n, n + length))]
+        
+
+    def right_down_span(self, (m, n), length, wrap):
+        """Return a generator of length indices starting at (m, n) or None.
+
+        The indices go diagonally from the top left to bottom right and can
+        wrap around the grid if wrap is True.
+        """
+
+        if length > self.num_cols or length > self.num_rows or \
+           (not wrap and (n + length > self.num_cols or 
+                          m + length > self.num_rows)):
+            return None
+        
+        return [(mm % self.num_rows, nn % self.num_cols) 
+                for (mm, nn) in izip(xrange(m, m + length), 
+                                     xrange(n, n + length))]
 
     def __len__(self):
         """Return the number of letter slots in the grid."""

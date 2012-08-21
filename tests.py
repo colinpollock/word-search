@@ -205,6 +205,74 @@ class TestSpanFinding(object):
         assert str(self.grid) == 'CAT\nNTA'
 
 
+class TestDiagonalSpanFinding(object):
+    def setup(self):
+        self.grid = Grid([['A', 'B', 'C'],
+                          ['D', 'E', 'F'],
+                          ['G', 'H', 'I']])
+
+    def test_left_down(self):
+        found = list(self.grid.left_down_span((0, 2), 2, False))
+        assert found == [(0, 2), (1, 1)]
+
+    def test_left_down_wrap(self):
+        found = list(self.grid.left_down_span((2, 0), 3, True))
+        print found
+        assert found == [(2, 0), (0, 2), (1, 1)]
+
+    def test_left_down_too_long(self):
+        assert self.grid.left_down_span((2, 0), 3, False) is None
+
+    def test_left_down_too_long_wrap(self):
+        assert self.grid.left_down_span((2, 0), 4, True) is None
+
+
+    def test_left_up(self):
+        found = list(self.grid.left_up_span((1, 1), 2, False))
+        assert found == [(1, 1), (0, 0)]
+        
+    def test_left_up_wrap(self):
+        found = list(self.grid.left_up_span((1, 1), 3, True))
+        assert found == [(1, 1), (0, 0), (2, 2)]
+
+    def test_left_up_too_long(self):
+        assert self.grid.left_up_span((0, 1), 2, False) is None
+
+    def test_left_up_too_long_wrap(self):
+        assert self.grid.left_up_span((2, 2), 4, True) is None
+
+    def test_right_up(self):
+        found = list(self.grid.right_up_span((2, 1), 2, False))
+        assert found == [(2, 1), (1, 2)]
+
+    def test_right_up_wrap(self):
+        found = list(self.grid.right_up_span((2, 1), 3, True))
+        assert found == [(2, 1), (1, 2), (0, 0)]
+        
+
+    def test_right_up_too_long(self):
+        assert self.grid.right_up_span((1, 1), 3, False) is None
+
+    def test_right_up_too_long_wrap(self):
+        assert self.grid.right_up_span((2, 0), 4, True) is None
+
+    def test_right_down(self):
+        found = list(self.grid.right_down_span((1, 0), 2, False))
+        assert found == [(1, 0), (2, 1)]
+        
+
+    def test_right_down_wrap(self):
+        found = list(self.grid.right_down_span((1, 0), 3, True))
+        print found
+        assert found == [(1, 0), (2, 1), (0, 2)]
+
+    def test_right_down_too_long(self):
+        assert self.grid.right_down_span((1, 2), 2, False) is None
+
+    def test_right_down_too_long_wrap(self):
+        assert self.grid.right_down_span((0, 0), 4, True) is None
+
+
 def test_empty_setup():
     """There should be the right number of rows and columns, all None."""
     grid = Grid.empty(4, 3)
