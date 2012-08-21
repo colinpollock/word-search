@@ -68,13 +68,7 @@ class Grid(object):
         if length > self.num_rows or (not wrap and m - length + 1 < 0):
             return None
 
-        span = []
-        for m_offset in xrange(length):
-            m_pos = m - m_offset
-            if m_pos < 0:
-                m_pos += self.num_rows
-            span.append((m_pos, n))
-        return span
+        return [(mm % self.num_rows, n) for mm in xrange(m, m - length, -1)]
 
 
     def down_span(self, (m, n), length, wrap):
@@ -87,15 +81,7 @@ class Grid(object):
         if length > self.num_rows or (not wrap and m + length > self.num_rows):
             return None
 
-        span = []
-        for m_offset in xrange(length):
-            m_pos = m + m_offset
-            if m_pos >= self.num_rows:
-                m_pos -= self.num_rows
-            span.append((m_pos, n))
-        return span
-
-
+        return [(mm % self.num_rows, n) for mm in xrange(m, m + length)]
 
 
     def right_span(self, (m, n), length, wrap):
@@ -107,13 +93,8 @@ class Grid(object):
         if length > self.num_cols or (not wrap and n + length > self.num_cols):
             return None
 
-        span = []
-        for n_offset in xrange(length):
-            n_pos = n + n_offset
-            if n_pos >= self.num_cols:
-                n_pos -= self.num_cols
-            span.append((m, n_pos))
-        return span
+        return [(m, nn % self.num_cols) for nn in xrange(n, n + length)]
+
 
     def left_span(self, (m, n), length, wrap):
         """Return a generator of length indices starting at (m, n) or None.
@@ -125,13 +106,8 @@ class Grid(object):
         if length > self.num_cols or (not wrap and n - length + 1 < 0):
             return None
 
-        span = []
-        for n_offset in xrange(length):
-            n_pos = n - n_offset
-            if n_pos < 0:
-                n_pos += self.num_cols
-            span.append((m, n_pos))
-        return span
+        return [(m, nn % self.num_cols) for nn in xrange(n, n - length, -1)]
+
 
 
     def left_down_span(self, start_index, length, wrap):
