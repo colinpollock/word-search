@@ -17,22 +17,21 @@ class TestFindWords(object):
 
         self.words = ['FED', 'CAB', 'GAD', 'BID', 'HIGH']
 
-    @nottest
     def test_no_wrap(self):
         indices = self.grid.find_words(self.words, False)
-        assert indices == [[(1, 2), (1, 0)],
+        print indices
+        assert indices == [((1, 2), (1, 0)),
                            None,
                            None,
                            None,
                            None]
 
-    @nottest
     def test_wrap(self):
         indices = self.grid.find_words(self.words, True)
-        assert indices == [[(1, 2), (1, 0)],
-                           [(0, 2), (0, 1)],
-                           [(2, 0), (1, 0)],
-                           [(0, 1), (1, 0)],
+        assert indices == [((1, 2), (1, 0)),
+                           ((0, 2), (0, 1)),
+                           ((2, 0), (1, 0)),
+                           ((0, 1), (1, 0)),
                            None]
 
 
@@ -75,15 +74,11 @@ class TestFindWord(object):
     def test_left_wrapped(self):
         assert self.find('NAT', True) == [(1, 0), (1, 1)]
 
-
-    @nottest
     def test_right_down(self):
-        assert self.find('CT', True) == [(0, 0), (1, 1)]
+        assert self.find('AA', True) == [(0, 1), (1, 2)]
 
-    @nottest
     def test_right_down_wrap(self):
-        assert self.find('TC', True) == [(1, 1), (0, 0)]
-
+        assert self.find('TC', True) == [(0, 2), (0, 0)]
 
 
 class TestGridOperations(object):
@@ -180,15 +175,11 @@ class TestSpanFinding(object):
     def test_down_over_end(self):
         assert self.grid.down_span((1, 0), 2, False) is None
 
-    @nottest
-    def test_wrap(self):
-        found = [list(ob) for ob in (self.grid.spans((0, 0), 2, False))]
-        assert len([ob for ob in found if ob is not None]) == 6
+    def test_num_spans_no_wrap(self):
+        assert len(list(self.grid.spans((0, 0), 2, False))) == 3
 
-    @nottest
-    def test_no_wrap(self):
-        found = [list(ob) for ob in (self.grid.spans((0, 0), 2, True))]
-        assert len([ob for ob in found if ob is not None]) == 3
+    def test_num_spans_wrap(self):
+        assert len(list(self.grid.spans((0, 0), 2, True))) == 8
 
     def test_right_wrap(self):
         """Should find a span that wraps around the right side."""
