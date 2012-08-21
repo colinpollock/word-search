@@ -264,14 +264,6 @@ class TestDiagonalSpanFinding(object):
         assert self.grid.right_down_span((0, 0), 4, True) is None
 
 
-def test_empty_setup():
-    """There should be the right number of rows and columns, all None."""
-    grid = Grid.empty(4, 3)
-    assert grid.num_rows == 4
-    assert grid.num_cols == 3
-    assert all(item is None for item in grid)
-
-
 def test_load_from_str_input():
     s = """3 3
 

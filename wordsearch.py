@@ -18,10 +18,6 @@ class Grid(object):
         self.num_rows = len(grid)
         self.num_cols = len(grid[0]) if grid else 0
 
-    @staticmethod
-    def empty(num_rows, num_cols):
-        return Grid([[None for m in xrange(num_cols)] 
-                           for n in xrange(num_rows)])
 
     def __getitem__(self, (m, n)):
         """Return the letter at the mth row and nth column."""
