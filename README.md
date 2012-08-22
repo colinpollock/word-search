@@ -4,14 +4,14 @@ Word Search
 This is a word search solver that finds words in a two dimensional grid. Words
 can be in any of these directions:
 
-1) left to right
-2) right to left
-3) up to down
-4) down to up
-5) top left to bottom right
-6) top right to bottom left
-7) bottom left to top right
-8) bottom right to top left
+* left to right
+* right to left
+* up to down
+* down to up
+* top left to bottom right
+* top right to bottom left
+* bottom left to top right
+* bottom right to top left
 
 If the wrap flag is True then words can hit an edge of the grid and continue on
 the other end.
@@ -62,10 +62,11 @@ AD
 Running Tests
 -------------
 Use nose to run the tests.
+
 ```nosetests tests.py```
 
 
 Issues
 ------
-* If grid isn't square it's possible to have a span longer than the number
+* If the grid isn't square it's possible to have a span longer than the number
   of rows or columns but I don't allow that.
