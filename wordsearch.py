@@ -1,6 +1,4 @@
-"""Word Search solver
-
-"""
+"""Word Search solver"""
 
 from itertools import izip, ifilter
 import re
@@ -8,7 +6,7 @@ import sys
 
 
 class Grid(object):
-    #TODO: docstr
+    """A grid of letters together with methods for finding words in the grid."""
 
     def __init__(self, grid):
         self.rows = grid
